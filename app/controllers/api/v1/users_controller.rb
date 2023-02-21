@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    # api/v1/user_controller
+    # api/v1/users_controller
     class UsersController < ApplicationController
       before_action :user_params, only: [:create]
 
@@ -15,8 +15,8 @@ module Api
       end
 
       def create
- #       require 'pry'; binding.pry
-        result = create_user.new(user_params: user_params).call
+        result = create_user.new(user_params:).call
+
         if result.id.nil?
           error_handler(errors: result.errors, status: 404)
         else

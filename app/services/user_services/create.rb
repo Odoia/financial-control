@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 module UserServices
+  # UserServices::Create
   class Create
     def initialize(user_params)
-      user_params = user_params[:user_params]
-      @email = user_params['email']
-      @cpf = user_params['cpf']
-      @password = user_params['password']
-      @phone = user_params['phone']
-      @name = user_params['name']
-      @surname = user_params['surname']
+      params = user_params[:user_params]&.with_indifferent_access
+      @email = params['email']
+      @cpf = params['cpf']
+      @password = params['password']
+      @phone = params['phone']
+      @name = params['name']
+      @surname = params['surname']
     end
 
     def call
